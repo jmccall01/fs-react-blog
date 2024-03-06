@@ -21,3 +21,24 @@ DB_PASS="your database password here"
 JWT_KEY="JWT key here"
 ## Step 8:
 Run `npm start` from both the server and client repos (let them run simultaneously along with having your pgAdmin server running)
+
+## User Credentials
+You can create your own user but if you would like to log in as one of the pre-made users:
+
+
+**Username / password**
+
+
+Albert Einstein / Relativity!
+
+
+Galileo Galilei / Telescope!
+
+
+CERN / COLLIDER!
+
+
+David Hilbert / Infinite!
+
+
+Isaac Newton / Gravity!
