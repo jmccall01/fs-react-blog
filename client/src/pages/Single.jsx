@@ -1,35 +1,66 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Edit from '../imgs/edit.png'
 import Delete from '../imgs/delete.png'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Menu from '../components/Menu.jsx'
+import axios from 'axios'
+import moment from 'moment'
+import { AuthContext } from '../context/authContext.js'
+import DOMPurify from 'dompurify'
 
 const Single = () => {
+  const [post, setPosts] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const postId = location.pathname.split("/")[2];
+  const {currentUser} = useContext(AuthContext);
+
+  useEffect(()=>{
+    const fetchPostData = async ()=>{
+      try {
+        const res = await axios.get(`/posts/${postId}`);
+        setPosts(res.data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchPostData();
+  }, [postId])
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`/posts/${postId}`);
+      navigate("/")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="single">
       <div className="content">
-        <img src="https://images.unsplash.com/photo-1528484701073-2b22dc76649e?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        <img src={`../uploads/${post.img ? post.img : "default.jpg"}`} alt="" />
         <div className="user">
-          <img src="https://static01.nyt.com/images/2007/12/19/us/physicsnew600.jpg?quality=75&auto=webp&disable=upscale" alt="" />
+          {post.uimg && <img src={post.uimg} alt="" />}
           <div className="info">
-            <span>John</span>
-            <p>Posted 2 days ago</p>
+            <span>{post.username}</span>
+            <p>Posted: {moment(post.date).fromNow()}</p>
           </div>
-          <div className="edit">
-            <Link className='link' to={`/write?edit=2`}>
-              <img src={Edit} alt="" />
-            </Link>
-            <img src={Delete} alt="" />
-          </div>
+          {post?.userid === currentUser?.id &&
+            <div className="edit">
+              <Link className='link' to={`/write?edit=${postId}`} state={post}>
+                <img src={Edit} alt="" />
+              </Link>
+              <img onClick={handleDelete} src={Delete} alt="" />
+            </div>
+          }
         </div>
         <h1>
-          Dummy title
+          {post.title}
         </h1>
-        <p>
-          Dummy text
-        </p>
+         <div className="post-desc" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.description)}}></div>
       </div>
-      <Menu />
+      <Menu cat={post.cat} />
     </div>
   )
 }

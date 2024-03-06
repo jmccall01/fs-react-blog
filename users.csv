@@ -1,0 +1,6 @@
+id|username|email|password|uimg
+11|Albert Einstein|einstein@physics.com|$2b$10$DU2FThWmKV/9rcVoXMvdBueNizxI8hP/Fff73n2uxUTBq5XTERANS|../uimgs/einstein.jpg
+12|Galileo Galilei|Galileo|$2b$10$TIjrU7K/b6svCl2MXdkqneuE69YYQgXas03.rBTag..OSc/4I4/IG|../uimgs/galileo.jpg
+13|CERN|cern@physics.com|$2b$10$Tm.GnZaGZO6T3XFOZ//jKOBq0lTeHlyCsEX6D4lnlvziDZyUg05/u|../uimgs/CERN.png
+14|David Hilbert|hilbert@physics.com|$2b$10$0i2Ry7tozsljqWsUkb6DeeJU/K1c7t2kZIoEOGV7BaUQij41GKR4W|../uimgs/hilbert.jpg
+15|Isaac Newton|newton@physics.com|$2b$10$cvsUO9Id3HU2KEDJsZvD7eu/CW7eie1Caqm1lPSz6aKKIB/B3qr7W|../uimgs/newton.jpg

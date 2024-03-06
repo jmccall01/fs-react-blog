@@ -6,6 +6,7 @@ $main-darker: #2b5392;
   padding: 0;
 }
 
+
 .app {
 
   display: flex;
@@ -23,10 +24,13 @@ $main-darker: #2b5392;
     //LOGIN & REGISTER
 
     .auth {
+      left: 0;
+      position: fixed;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      width: 100vw;
       height: 100vh;
       background-color: $main;
     }
@@ -92,6 +96,7 @@ $main-darker: #2b5392;
           h6 {
             font-size: 16px;
             font-weight: 300;
+            &:hover {text-shadow:0px 0px 1px black;}
           }
 
           span {
@@ -116,6 +121,23 @@ $main-darker: #2b5392;
               border: 1px solid #2b5392;
               font-weight: 900;
             }
+          }
+
+          .noLink {
+            cursor: default;
+          }
+
+          .username {
+            font-weight: bold;
+            font-size: 15px;
+            padding: 0 4px;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+          }
+
+          .sign-in-out{
+            font-size: 16px;
+            &:hover {text-shadow:0px 0px 1px black;}
           }
 
         }
@@ -160,21 +182,12 @@ $main-darker: #2b5392;
             flex: 2;
             position: relative;
 
-            &:after {
-              content: "";
-              width: 100%;
-              height: 100%;
-              background-color: $main-darker;
-              position: absolute;
-              top: 20px;
-              right: 20px;
-              z-index: -1;
-            }
 
             img {
               width: 100%;
               max-height: 400px;
               object-fit: cover;
+              box-shadow: -60px 30px 10px $main-darker;
             }
           }
 
@@ -194,6 +207,7 @@ $main-darker: #2b5392;
           }
 
           button {
+            margin-top: 15px;
             width: max-content;
             padding: 10px;
             cursor: pointer;
@@ -259,18 +273,27 @@ $main-darker: #2b5392;
             }
           }
 
-          h1 {
-            font-size: 42px;
-            color: #555;
-          }
+          
+        }
 
-          p{
-            text-align: justify;
-            line-height: 30px;
-
+        h1 {
+          font-size: 44px;
+          color: #555;
+        }
+        
+        .post-desc {
+          line-height: 20px;
+          ol, ul {
+            padding: 10px 2px;
+            li {
+              text-align: start;
+              margin-left: 5%;
+            }
           }
         }
+
       }
+
       .menu {
         flex: 2;
         display: flex;
@@ -336,8 +359,7 @@ $main-darker: #2b5392;
 
         .editorContainer {
           height: 300px;
-          border: 1px solid lightgray;
-          overflow: hidden;
+          overflow:visible ;
           
           .editor {
             height: 100%;
